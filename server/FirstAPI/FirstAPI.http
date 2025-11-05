@@ -1,0 +1,64 @@
+@rootURL = http://localhost:5091
+
+GET {{rootURL}}/weatherforecast/
+Accept: application/json
+
+###
+
+GET {{rootURL}}/api/books
+Accept: application/json
+
+###
+
+GET {{rootURL}}/api/books/2
+Accept: application/json
+
+###
+POST {{rootURL}}/api/books
+Content-Type: application/json
+Accept: application/json
+{
+  "title": "New Book Title",
+  "author": "Author Name",
+  "yearPublished": "2025"
+}
+
+###
+PUT {{rootURL}}/api/books/1001
+Content-Type: application/json
+Accept: application/json
+{
+  "id": 1001,
+  "title": "Updated Book Title",
+  "author": "Updated Author Name",
+  "yearPublished": "2026"
+}
+
+###
+DELETE {{rootURL}}/api/books/1001
+Accept: application/json
+
+###
+GET {{rootURL}}/api/todos
+Accept: application/json
+
+###
+POST {{rootURL}}/api/todos
+Accept: application/json
+Content-Type: application/json
+{
+  "title": "New Todo Task",
+  "isCompleted": false
+}
+###
+PUT {{rootURL}}/api/todos/4
+Accept: application/json
+Content-Type: application/json
+{
+  "id": 4,
+  "title": "Updated Todo Task",
+  "isCompleted": true
+}
+###
+DELETE {{rootURL}}/api/todos/4
+Accept: application/json

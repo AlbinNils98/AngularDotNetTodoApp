@@ -1,0 +1,8 @@
+<li class="todos__item">
+  <button aria-label='remove button' (click)="this.removeClicked()"><i class='fa-solid fa-trash'></i></button>
+
+  <div appHighlightCompletedTodo [isCompleted]="todo().isCompleted">
+    <input id='todo-{{todo().id}}' type="checkbox" [checked]="todo().isCompleted" (change)="this.todoClicked()" />
+    <label for='todo-{{todo().id}}'>{{todo().title | uppercase}}</label>
+  </div>
+</li>

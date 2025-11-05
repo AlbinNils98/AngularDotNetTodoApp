@@ -1,0 +1,45 @@
+.todolist {
+  margin: 0;
+  padding: 0;
+    padding: 24px;
+  background-color: #333;
+  width: 50%;
+    border-radius: 6px;
+    color: white;
+
+
+  &__todos {
+  display: flex;
+  flex-direction: column;
+    padding: 0;
+  list-style: none;
+  gap: 8px;
+}
+form{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+
+    input{
+        padding: 8px;
+        border-radius: 4px;
+        border: none;
+        font-size: 16px;
+    }
+
+    button{
+        padding: 8px 16px;
+        border: none;
+        border-radius: 4px;
+        background-color: #28a745;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+
+        &:hover{
+            background-color: #218838;
+        }
+    }
+  }
+}
