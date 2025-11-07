@@ -24,7 +24,7 @@ my-monolith/
 │   ├── Data/
 │   ├── Migrations/
 │   ├── Program.cs
-│   └── LearningPortal.csproj
+│   └── Api.csproj
 └── Api.sln    # Solution file (open this in Visual Studio)
 ```
 
@@ -45,34 +45,6 @@ Visual Studio .vs folder, bin/, obj/ and frontend node_modules/ are ignored in G
 ```bash
 npm install -g @angular/cli
 ```
-
-### Frontend Setup (Angular)
-
-#### 1. Navigate to the client/ folder:
-```bash
-cd client
-```
-
-#### 2. Install dependencies:
-```bash
-npm install
-```
-
-#### 3. Run the Angular development server:
-```bash
-ng serve
-```
-
-#### 4. Open your browser at http://localhost:4200.
-
-The frontend communicates with the backend API at https://localhost:7111.
-
-#### Usage
-- Add a Todo
-- Mark as Completed
-- Delete Todo
-
-All changes are persisted via the ASP.NET Core Web API using Entity Framework Core and SQL Server.
 
 ### SQL Database setup
 
@@ -103,6 +75,34 @@ EF Core will execute the schema changes defined in the existing migration files.
 Open SSMS and connect to your local SQL Server instance.
 Look for the database you specified in the connection string.
 Expand Tables → you should see all tables defined in the migrations (Todos, Books, etc.).
+
+### Frontend Setup (Angular)
+
+#### 1. Navigate to the client/ folder:
+```bash
+cd client
+```
+
+#### 2. Install dependencies:
+```bash
+npm install
+```
+
+#### 3. Run the Angular development server:
+```bash
+npm start
+```
+
+#### 4. Open your browser at http://localhost:4200.
+
+The frontend communicates with the backend API at https://localhost:7111.
+
+#### Usage
+- Add a Todo
+- Mark as Completed
+- Delete Todo
+
+All changes are persisted via the ASP.NET Core Web API using Entity Framework Core and SQL Server.
 
 ### Backend Setup (ASP.NET Core API)
 
