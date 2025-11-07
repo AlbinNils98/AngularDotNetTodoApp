@@ -1,11 +1,11 @@
-﻿using FirstAPI.Models;
+﻿using Api.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace FirstAPI.Data
+namespace Api.Data
 {
-    public class FirstAPIContext : DbContext
+    public class ApiContext : DbContext
     {
-        public FirstAPIContext(DbContextOptions<FirstAPIContext> options):base(options)
+        public ApiContext(DbContextOptions<ApiContext> options):base(options)
         {
         }
 

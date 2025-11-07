@@ -1,5 +1,5 @@
-﻿using FirstAPI.Data;
-using FirstAPI.Models;
+﻿using Api.Data;
+using Api.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,8 +10,8 @@ namespace FirstAPI.Controllers
     public class TodosController : ControllerBase
     {
 
-        private readonly FirstAPIContext _context;
-        public TodosController(FirstAPIContext context)
+        private readonly ApiContext _context;
+        public TodosController(ApiContext context)
         {
             _context = context;
         }

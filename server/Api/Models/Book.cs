@@ -1,4 +1,4 @@
-﻿namespace FirstAPI.Models
+﻿namespace Api.Models
 {
     public class Book
     {

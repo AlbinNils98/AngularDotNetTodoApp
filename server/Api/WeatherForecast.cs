@@ -1,4 +1,4 @@
-namespace FirstAPI
+namespace Api
 {
     public class WeatherForecast
     {

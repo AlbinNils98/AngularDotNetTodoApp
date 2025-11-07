@@ -1,5 +1,5 @@
-﻿using FirstAPI.Data;
-using FirstAPI.Models;
+﻿using Api.Data;
+using Api.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -10,8 +10,8 @@ namespace FirstAPI.Controllers
     [ApiController]
     public class BooksController : ControllerBase
     {
-        private readonly FirstAPIContext _context;
-        public BooksController(FirstAPIContext context)
+        private readonly ApiContext _context;
+        public BooksController(ApiContext context)
         {
             _context = context;
         }
