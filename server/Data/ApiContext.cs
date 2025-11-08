@@ -1,4 +1,5 @@
 ﻿using Api.Models;
+using BCrypt.Net;
 using Microsoft.EntityFrameworkCore;
 
 namespace Api.Data
@@ -13,55 +14,66 @@ namespace Api.Data
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<Book>().HasData(
-                new Book
-                {
-                    Id = 1,
-                    Title = "1984",
-                    Author = "George Orwell",
-                    YearPublished = 1949
-                },
-                new Book
-                {
-                    Id = 2,
-                    Title = "To Kill a Mockingbird",
-                    Author = "Harper Lee",
-                    YearPublished = 1960
-                },
-                new Book
-                {
-                    Id = 3,
-                    Title = "The Great Gatsby",
-                    Author = "F. Scott Fitzgerald",
-                    YearPublished = 1925
-                }
-                );
+
+            var seedDate = new DateTime(2025, 11, 8, 12, 0, 0);
+            var fixedPasswordHash = "$2a$11$N1lR9YQh1W5kXFx4hGJbF.zKpPvjI3r9g6tA1x5oqYm0yF6bJ5dQO";
+
 
             modelBuilder.Entity<Todo>().HasData(
                 new Todo
                 {
                     Id = 1,
                     Title = "Learn C#",
-                    IsCompleted = false
+                    IsCompleted = false,
+                    UserId = 1,
+                    CreatedAt = seedDate,
+                    UpdatedAt = seedDate
                 },
                 new Todo
                 {
                     Id = 2,
                     Title = "Build an API",
-                    IsCompleted = false
+                    IsCompleted = false,
+                    UserId = 1,
+                    CreatedAt = seedDate,
+                    UpdatedAt = seedDate
                 },
                 new Todo
                 {
                     Id = 3,
                     Title = "Write Documentation",
-                    IsCompleted = false
+                    IsCompleted = false,
+                    UserId = 2,
+                    CreatedAt = seedDate,
+                    UpdatedAt = seedDate
+                }
+                );
+
+            modelBuilder.Entity<User>().HasData(
+                new User
+                {
+                    Id = 1,
+                    Username = "user1",
+                    Email = "user2@email.test",
+                    PasswordHash = fixedPasswordHash,
+                    CreatedAt = seedDate,
+                    UpdatedAt = seedDate
+                },
+                new User
+                {
+                    Id = 2,
+                    Username = "user2",
+                    Email = "user2@email.test",
+                    PasswordHash = fixedPasswordHash,
+                    CreatedAt = seedDate,
+                    UpdatedAt = seedDate
                 }
                 );
 
         }
 
-        public DbSet<Book> Books { get; set; }
         public DbSet<Todo> Todos { get; set; }
+        public DbSet<User> Users { get; set; }
 
-    }
+        }
 }
