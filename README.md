@@ -34,6 +34,8 @@ The .sln file is at the root to make it easy to manage multiple projects (server
 
 Visual Studio .vs folder, bin/, obj/ and frontend node_modules/ are ignored in Git.
 
+---
+
 ## Getting Started
 ### Prerequisites
 
@@ -45,6 +47,7 @@ Visual Studio .vs folder, bin/, obj/ and frontend node_modules/ are ignored in G
 ```bash
 npm install -g @angular/cli
 ```
+---
 
 ### SQL Database setup
 
@@ -76,6 +79,8 @@ Open SSMS and connect to your local SQL Server instance.
 Look for the database you specified in the connection string.
 Expand Tables → you should see all tables defined in the migrations (Todos, Books, etc.).
 
+---
+
 ### Frontend Setup (Angular)
 
 #### 1. Navigate to the client/ folder:
@@ -103,6 +108,8 @@ The frontend communicates with the backend API at https://localhost:7111.
 - Delete Todo
 
 All changes are persisted via the ASP.NET Core Web API using Entity Framework Core and SQL Server.
+
+---
 
 ### Backend Setup (ASP.NET Core API)
 
