@@ -4,7 +4,6 @@ using Api.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 
 namespace FirstAPI.Controllers
@@ -99,7 +98,7 @@ namespace FirstAPI.Controllers
             if (todo == null)
                 return NotFound();
 
-            todo.IsCompleted = !todo.IsCompleted;
+            todo.IsCompleted = updatedTodo.IsCompleted;
             todo.UpdatedAt = DateTime.UtcNow;
 
             await _context.SaveChangesAsync();
