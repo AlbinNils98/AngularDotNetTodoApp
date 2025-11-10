@@ -1,37 +1,39 @@
+@use 'variables' as v;
+
 header {
   display: flex;
   padding-inline: 16px;
   padding-block: 8px;
-  background-color: #333;
+  background-color: v.$primary-color;
   color: white;
   align-items: center;
   justify-content: space-between;
 
-  nav{
+  nav {
     display: flex;
     flex: 1;
     justify-content: space-between;
     align-items: center;
 
-  > span{
-    &:hover{
-      color: #777;
-      cursor: pointer;
-    }
-  }
-
-  ul {
-    list-style: none;
-  }
-
-  li {
-    &:hover{
-      color: #777;
-      cursor: pointer;
+    >span {
+      &:hover {
+        color: #777;
+        cursor: pointer;
+      }
     }
 
+    ul {
+      list-style: none;
+    }
 
-  }
+    li {
+      &:hover {
+        color: #777;
+        cursor: pointer;
+      }
+
+
+    }
   }
 
 }

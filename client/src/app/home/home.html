@@ -1,3 +1,7 @@
-<app-greeting [message]="homeMessage()" />
-<app-counter />
-<input placeholder='Type something' type="text" (keyup)="keyUpHandler($event)" />
+<div class="home">
+  <div class="home__container">
+    <app-greeting [message]="homeMessage()" />
+    <app-counter />
+    <input placeholder='Type something' type="text" (keyup)="keyUpHandler($event)" />
+  </div>
+</div>

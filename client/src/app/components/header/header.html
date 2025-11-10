@@ -1,8 +1,14 @@
 <header>
   <nav>
-    <span routerLink="/">{{title}}</span>
+    <span routerLink="/">{{ title }}</span>
+
     <ul>
+      @if (isLoggedIn()) {
       <li routerLink="/todos">Todos</li>
+      <li (click)="onLogout()">Logout</li>
+      }@else{
+      <li routerLink="/login">Login</li>
+      }
     </ul>
   </nav>
 </header>

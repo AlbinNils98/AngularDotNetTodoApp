@@ -1,5 +1,6 @@
-import { Component, signal } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Component, inject } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
+import { AuthService } from '../../services/auth/auth';
 
 @Component({
   selector: 'app-header',
@@ -8,6 +9,15 @@ import { RouterLink } from '@angular/router';
   styleUrl: './header.scss',
 })
 export class HeaderComponent {
+  private authService: AuthService = inject(AuthService);
+  private readonly router = inject(Router);
+
   title = 'My First Angular App';
 
+  isLoggedIn = this.authService.isLoggedIn;
+
+  onLogout() {
+    this.authService.logout();
+    this.router.navigate(['/login']);
+  }
 }

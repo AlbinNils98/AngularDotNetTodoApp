@@ -1,5 +1,5 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
-import { TodosService } from '../services/todos';
+import { TodosService } from '../services/todos/todos';
 import { Todo } from '../model/todo.type';
 import { catchError } from 'rxjs';
 import { TodoItemComponent } from '../components/todo-item/todo-item';
