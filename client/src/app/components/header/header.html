@@ -4,10 +4,10 @@
 
     <ul>
       @if (isLoggedIn()) {
-      <li routerLink="/todos">Todos</li>
+      <li><a routerLink="/todos">Todos</a></li>
       <li (click)="onLogout()">Logout</li>
       }@else{
-      <li routerLink="/login">Login</li>
+      <li><a routerLink="/login"></a>Login</li>
       }
     </ul>
   </nav>

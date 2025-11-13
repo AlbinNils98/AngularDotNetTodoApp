@@ -1,16 +1,43 @@
 import { TestBed } from '@angular/core/testing';
 
-import { Auth } from './auth';
+import { AuthService } from './auth';
+import { ApiService } from '../api/api';
+import { of } from 'rxjs';
+import { BrowserTestingModule } from '@angular/platform-browser/testing';
 
 describe('Auth', () => {
-  let service: Auth;
+  let service: AuthService;
+  let apiSpy: jasmine.SpyObj<ApiService>;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
-    service = TestBed.inject(Auth);
+    // create a spy for ApiService
+    apiSpy = jasmine.createSpyObj('ApiService', ['post']);
+    apiSpy.post.and.returnValue(of({ token: 'mock-token' }));
+
+    TestBed.configureTestingModule({
+      imports: [BrowserTestingModule],
+      providers: [
+        AuthService,
+        { provide: ApiService, useValue: apiSpy } // provide the spy
+      ]
+    });
+
+    service = TestBed.runInInjectionContext(() => TestBed.inject(AuthService));
   });
 
   it('should be created', () => {
     expect(service).toBeTruthy();
+  });
+
+  it('should set token on login', (done) => {
+    service.login('user', 'pass').subscribe(() => {
+      expect(service.token).toBe('mock-token');
+      done();
+    });
+  });
+
+  it('should clear token on logout', () => {
+    service.logout();
+    expect(service.token).toBeNull();
   });
 });
