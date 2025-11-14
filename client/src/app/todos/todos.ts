@@ -34,7 +34,7 @@ export class TodosComponent implements OnInit {
   }
 
   updateTodoItem(todoItem: Todo) {
-    this.todoService.updateTodoCompletion(
+    this.todoService.updateTodoItem(
       {
         ...todoItem,
         isCompleted: !todoItem.isCompleted
@@ -57,6 +57,9 @@ export class TodosComponent implements OnInit {
       title,
       isCompleted: false
     };
+
+    if (!newTodo.title.trim()) return;
+
     this.todoService.addTodoItem(newTodo)
       .pipe(catchError((err) => {
         console.error('Error adding todo:', err);

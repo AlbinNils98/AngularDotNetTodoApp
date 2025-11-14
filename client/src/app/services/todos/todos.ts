@@ -14,7 +14,7 @@ export class TodosService {
     return this.api.get<Array<Todo>>(url);
   }
 
-  updateTodoCompletion(todo: Todo) {
+  updateTodoItem(todo: Todo) {
     const url = `api/todos/${todo.id}`;
     return this.api.put<Todo>(url, todo);
   }

@@ -1,7 +1,7 @@
 <div class='todolist'>
   <h3>Todos list</h3>
 
-  <form>
+  <form class='todolist__addForm'>
     <input name="newTodoTitle" [(ngModel)]="newTodoTitle" placeholder='New Todo title...'>
     <button (click)="addTodoItem(newTodoTitle())">+ Add Todo</button>
   </form>
