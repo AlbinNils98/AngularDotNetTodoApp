@@ -48,7 +48,6 @@ describe('HeaderComponent', () => {
 
   it('should call logout and navigate to /login on onLogout', async () => {
     const fixture = TestBed.createComponent(HeaderComponent);
-    const header = fixture.componentInstance;
 
     spyOn(router, 'navigate').and.returnValue(Promise.resolve(true));
 
@@ -70,8 +69,6 @@ describe('HeaderComponent', () => {
     const fixture = TestBed.createComponent(HeaderComponent);
     fixture.detectChanges();
 
-    spyOn(router, 'navigate').and.returnValue(Promise.resolve(true));
-
     const todosLink = fixture.debugElement.query(By.css('a[routerlink="/todos"]')).nativeElement;
     todosLink.click();
 
@@ -87,8 +84,6 @@ describe('HeaderComponent', () => {
 
     const fixture = TestBed.createComponent(HeaderComponent);
     fixture.detectChanges();
-
-    spyOn(router, 'navigate').and.returnValue(Promise.resolve(true));
 
     const loginLink = fixture.debugElement.query(By.css('a[routerlink="/login"]')).nativeElement;
 
