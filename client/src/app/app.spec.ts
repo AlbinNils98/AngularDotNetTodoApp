@@ -10,7 +10,17 @@ describe('App', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [App],
-      providers: [provideZonelessChangeDetection(), provideHttpClientTesting(), { provide: ApiService, useValue: {} }, { provide: AuthService, useValue: {} }, { provide: ActivatedRoute, useValue: { snapshot: { paramMap: new Map() } } }]
+      providers: [
+        provideZonelessChangeDetection(),
+        provideHttpClientTesting(),
+        { provide: ApiService, useValue: {} },
+        { provide: AuthService, useValue: {} },
+        {
+          provide: ActivatedRoute, useValue: {
+            snapshot:
+              { paramMap: new Map() }
+          }
+        }]
     }).compileComponents();
   });
 

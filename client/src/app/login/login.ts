@@ -18,6 +18,8 @@ export class LoginComponent {
   password = '';
 
   onSubmit() {
+    if (!this.username?.trim() || !this.password?.trim()) return;
+
     this.authService.login(this.username, this.password)
       .subscribe({
         next: () => this.router.navigate(['/todos']),

@@ -1,13 +1,11 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { Router, RouterModule } from '@angular/router';
+import { provideRouter, Router, RouterModule } from '@angular/router';
 import { By } from '@angular/platform-browser';
-import { Component, provideZonelessChangeDetection } from '@angular/core';
+import { provideZonelessChangeDetection } from '@angular/core';
 import { HeaderComponent } from './header';
 import { AuthService } from '../../services/auth/auth';
 import { Location } from '@angular/common';
-
-@Component({ template: '' })
-class DummyComponent { }
+import { DummyComponent } from '../../../test/Dummy';
 
 describe('HeaderComponent', () => {
   let authServiceSpy: any;
@@ -23,14 +21,14 @@ describe('HeaderComponent', () => {
     await TestBed.configureTestingModule({
       imports: [
         HeaderComponent,
-        RouterModule.forRoot([
-          { path: '', component: DummyComponent },
-          { path: 'todos', component: DummyComponent },
-          { path: 'login', component: DummyComponent }
-        ])
       ],
       providers: [
         provideZonelessChangeDetection(),
+        provideRouter([
+          { path: '', component: DummyComponent },
+          { path: 'todos', component: DummyComponent },
+          { path: 'login', component: DummyComponent }
+        ]),
         { provide: AuthService, useValue: authServiceSpy }
       ]
     }).compileComponents();
