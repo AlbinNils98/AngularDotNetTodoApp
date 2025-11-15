@@ -46,6 +46,10 @@ describe('Todos', () => {
     expect(component).toBeTruthy();
   });
 
+  it('should fetch todos on init', () => {
+    expect(todoServiceSpy.getTodosFromApi).toHaveBeenCalled();
+  });
+
   it('should show loading if empty todo list and not if there are any', () => {
     let loadingPrompt = fixture.debugElement.query(By.css('.todolist p'));
 
@@ -147,5 +151,64 @@ describe('Todos', () => {
     fixture.detectChanges();
 
     expect(todoServiceSpy.addTodoItem).not.toHaveBeenCalled();
+  });
+
+  it('should call TodoService.updateTodoItem on todo item label press', () => {
+    const todoItem = fixture.debugElement.query(By.directive(TodoItemComponent));
+
+    const labelElement: HTMLLabelElement = todoItem.query(By.css('label')).nativeElement;
+
+    labelElement.click();
+    labelElement.dispatchEvent(new Event('change'));
+    fixture.detectChanges();
+
+
+    expect(todoServiceSpy.updateTodoItem).toHaveBeenCalledWith({
+      id: 1,
+      title: 'Test Todo 1',
+      isCompleted: true
+    });
+  });
+
+  it('should call TodosService.updateTodoItem on todo item checkbox press', () => {
+    const todoItem = fixture.debugElement.query(By.directive(TodoItemComponent));
+
+    const labelElement: HTMLLabelElement = todoItem.query(By.css('input[type="checkbox"]')).nativeElement;
+
+    labelElement.click();
+    labelElement.dispatchEvent(new Event('change'));
+    fixture.detectChanges();
+
+    expect(todoServiceSpy.updateTodoItem).toHaveBeenCalledWith({
+      id: 1,
+      title: 'Test Todo 1',
+      isCompleted: true
+    });
+  });
+
+  it('should refetch todos after update', () => {
+    component.updateTodoItem({
+      id: 1, title: 'Test Todo 1', isCompleted: false
+    });
+
+    expect(todoServiceSpy.updateTodoItem).toHaveBeenCalled();
+    expect(todoServiceSpy.getTodosFromApi).toHaveBeenCalledTimes(2);
+  });
+
+  it('should call TodoService.deleteTodoItem on trashcan icon press', () => {
+    const todoItem = fixture.debugElement.query(By.directive(TodoItemComponent));
+
+    const labelElement: HTMLLabelElement = todoItem.query(By.css('button')).nativeElement;
+    labelElement.click();
+    labelElement.dispatchEvent(new Event('click'));
+    fixture.detectChanges();
+
+    expect(todoServiceSpy.deleteTodoItem).toHaveBeenCalledWith(1);
+  });
+
+  it('should refetch todos after delete', () => {
+    component.deleteTodoItem(1);
+    expect(todoServiceSpy.deleteTodoItem).toHaveBeenCalledWith(1);
+    expect(todoServiceSpy.getTodosFromApi).toHaveBeenCalledTimes(2);
   });
 });
