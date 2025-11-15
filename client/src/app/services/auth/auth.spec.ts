@@ -4,21 +4,22 @@ import { AuthService } from './auth';
 import { ApiService } from '../api/api';
 import { of } from 'rxjs';
 import { BrowserTestingModule } from '@angular/platform-browser/testing';
+import { provideZonelessChangeDetection } from '@angular/core';
 
 describe('Auth', () => {
   let service: AuthService;
   let apiSpy: jasmine.SpyObj<ApiService>;
 
   beforeEach(() => {
-    // create a spy for ApiService
     apiSpy = jasmine.createSpyObj('ApiService', ['post']);
     apiSpy.post.and.returnValue(of({ token: 'mock-token' }));
 
     TestBed.configureTestingModule({
       imports: [BrowserTestingModule],
       providers: [
+        provideZonelessChangeDetection(),
         AuthService,
-        { provide: ApiService, useValue: apiSpy } // provide the spy
+        { provide: ApiService, useValue: apiSpy }
       ]
     });
 
