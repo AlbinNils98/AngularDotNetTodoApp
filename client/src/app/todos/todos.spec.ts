@@ -2,8 +2,6 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TodosComponent } from './todos';
 import { provideZonelessChangeDetection } from '@angular/core';
-import { provideRouter } from '@angular/router';
-import { DummyComponent } from '../../test/Dummy';
 import { ApiService } from '../services/api/api';
 import { of } from 'rxjs';
 import { TodosService } from '../services/todos/todos';
